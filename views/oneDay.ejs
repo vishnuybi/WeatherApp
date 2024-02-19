@@ -1,0 +1,87 @@
+<%- include("partials/header.ejs") %>
+
+<h1>One Day Forecast</h1>
+<form action="post" method="post">
+    <div class="inputBox">
+        <input class="input" id="city" name="id" type="text" label="" placeholder="--Enter a City--" />
+    </div>
+    <input formaction="/onedayforecast" type="submit" class="button" value="Get Forecast"/>
+</form>
+<% if(locals.weather){ %>
+<div class="day-card">
+    <% const optionsDate = { day: '2-digit', month: 'short'};
+                const optionsDay = { weekday: 'long' };
+                const effectiveDate = new Date(weather.Headline.EffectiveDate);
+                const dateObject = new Date(weather.DailyForecasts[0].Date);
+                const formattedDate = dateObject.toLocaleDateString('en-US', optionsDate);%>
+    <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #333652;">
+        <p style="margin: 2px;">DAY</p>
+        <p style="margin: 2px;"><%=formattedDate%></p>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+        <div style="max-height: 120px;">
+            <h1 style="display: inline;"><%= ((weather.DailyForecasts[0].Temperature.Maximum.Value - 32) * 5/9).toFixed(1) %>°C</h1>
+            <h3 style="font-weight: 100; font-size: large; display: inline;">Hi</h3>
+        </div>
+        <i class="fa-solid fa-cloud-sun" style="font-size:60px; color: #333652;"></i>
+    </div>
+    <div>
+        <h5 style="text-align: left; margin: 2px 0; padding: 10px 0;"><%= weather.Headline.Text %></h5>
+    </div>
+    <div class="onedaygrid">
+        <div>
+            <p style="text-align: left;font-weight: 100;">Real Feel Temp</p>
+            <p><%= weather.DailyForecasts[0].RealFeelTemperature.Maximum.Value %></p>
+        </div>
+        <div>
+            <p style="text-align: left;font-weight: 100;">Max UV Index</p>
+            <p><%= weather.DailyForecasts[0].AirAndPollen[5].Category %></p>
+        </div>
+        <div>
+            <p style="text-align: left;font-weight: 100;">Precipitation</p>
+            <p><%= weather.DailyForecasts[0].Day.PrecipitationProbability %> %</p>
+        </div>
+        <div>
+            <p style="text-align: left;font-weight: 100;">Wind Gust</p>
+            <p><%= (weather.DailyForecasts[0].Day.WindGust.Speed.Value*1.6).toFixed(1) %><%= weather.DailyForecasts[0].Day.WindGust.Direction.Localized %></p>
+        </div>
+        <div>
+            <p style="text-align: left;font-weight: 100;">Max Hours of Sun</p>
+            <p><%= weather.DailyForecasts[0].HoursOfSun %></p>
+        </div>
+        <div>
+            <p style="text-align: left;font-weight: 100;">Humidity</p>
+            <p><%= weather.DailyForecasts[0].Day.RelativeHumidity.Average %></p>
+        </div>
+    </div>
+</div>
+
+<div class="nightcard">
+    <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #333652;">
+        <p style="margin: 2px;">NIGHT</p>
+        <p style="margin: 2px;"><%=formattedDate%></p>
+    </div>
+    <div style="display: flex; justify-content: space-between; padding: 10px 0;">
+        <div style="max-height: 120px;">
+            <h1 style="display: inline;"><%= ((weather.DailyForecasts[0].Temperature.Minimum.Value - 32) * 5/9).toFixed(1) %>°C</h1>
+            <h3 style="font-weight: 100; font-size: large; display: inline;">Lo</h3>
+        </div>
+        <i class="fa-solid fa-cloud-moon" style="font-size:60px; color: #333652;"></i>
+    </div>
+    <div class="onedaygrid">
+        <div>
+            <p style="text-align: left;font-weight: 100;">Real Feel Temp</p>
+            <p><%= weather.DailyForecasts[0].RealFeelTemperature.Minimum.Value %></p>
+        </div>
+        <div>
+            <p style="text-align: left;font-weight: 100;">Precipitation</p>
+            <p><%= weather.DailyForecasts[0].Night.PrecipitationProbability %> %</p>
+        </div>
+        <div>
+            <p style="text-align: left;font-weight: 100;">Wind Gust</p>
+            <p><%= (weather.DailyForecasts[0].Night.WindGust.Speed.Value*1.6).toFixed(1) %> Km/h <%= weather.DailyForecasts[0].Night.WindGust.Direction.Localized %></p>
+        </div>
+    </div>
+</div>
+<%- include("partials/footer.ejs") %>
+<% } %>

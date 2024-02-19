@@ -1,0 +1,37 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Five Day Forecast</h1>
+<form action="post" method="post">
+<div class="inputBox">
+  <input class="input" id="city"name="id" type="text" label="" placeholder="--Enter a City--" />
+</div>
+<input formaction="/fivedayforecast" type="submit" class="button" value="Get Forecast"/>
+</form>
+<% if(locals.weather){ %>
+<% for(let i=0;i<5;i++){ %>
+    <div class="fivedayhead">
+    <div class="fiveday">
+        <div class="cloudy">
+            <% const optionsDate = { day: '2-digit', month: 'short', year: '2-digit' };
+                const optionsDay = { weekday: 'long' };
+                const effectiveDate = new Date(weather.Headline.EffectiveDate);
+                const dateObject = new Date(weather.DailyForecasts[i].Date);
+                const formattedDate = dateObject.toLocaleDateString('en-US', optionsDate);
+                const formattedDay = dateObject.toLocaleDateString('en-US', optionsDay);%>
+            <p style="margin: 1px 0; font-weight:100;"><%= formattedDay %></p>
+            <p style="margin: 1px 0; font-weight: 100;"><%= formattedDate %></p>
+        </div>
+        <div>
+            <h3><%= Math.round((weather.DailyForecasts[i].Temperature.Maximum.Value-32)*5/9).toFixed(1) %>/ <%= Math.round((weather.DailyForecasts[i].Temperature.Minimum.Value -32)*5/9).toFixed(1)%> °C</h3>
+        </div>
+        <div>
+            Air Quality: <%= weather.DailyForecasts[i].AirAndPollen[0]?.Category || 'N/A' %> 
+            & UV Index: <%= weather.DailyForecasts[i].AirAndPollen[5]?.Category || 'N/A' %></div>
+        <div>
+            <p style="font-weight:100;"><%= weather.DailyForecasts[i].Day.PrecipitationProbability %> % / <%= weather.DailyForecasts[i].Day.PrecipitationProbability %> %  <i class="fa-solid fa-droplet"></i></p>
+        </div>
+    </div>
+</div>
+    <% } %>
+    <%- include("partials/footer.ejs") %>
+<% } %>

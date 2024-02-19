@@ -1,0 +1,256 @@
+body{
+    background-color: #B4D4FF;
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+header{
+    background-color: #e9eaec;
+    padding: 2px 0;
+    justify-content: center;
+    display: flex;
+}
+.nav{
+    text-decoration: none;
+    color: rgb(75, 75, 75);
+    font-size: medium;
+    font-weight:600;
+    margin: 0px 28px;
+    height: 24px;
+    line-height: 24px;
+}
+.nav:hover {
+    border-bottom: 4px solid #FFD700;
+    transition: color 0.3s, border-bottom 0.3s, transform 0.3s;
+}
+ul{
+    list-style: none;
+    display: flex;
+    margin-right: auto;
+    margin-top: 20px;
+}
+h1{
+    font-weight: bold;
+    font-size: 3.5em;
+    color: #333652;
+}
+h2{
+    font-size: 2.5em;
+    color: #333652;
+}
+h3{
+    font-size: 2em;
+    color: #333652;
+}
+h5{
+    color: #333652;
+    font-size: large;
+    font-weight: 500;
+    padding: 0 20px;
+    text-align: center;
+}
+.feather{
+    margin:16px 0;
+    padding: 2px 300px 0px 40px;
+    font-size: 30px;
+    color: #333652;
+}
+.input{
+    text-align: center;
+    font-size: large;
+    padding: 20px;
+    background-color:#B4D4FF;
+    border: none;
+    border-bottom:3px solid #FFD700 ;
+}
+::placeholder{
+    color:#333652;
+    font-family: 'Space Grotesk', sans-serif;
+    border: none;
+}
+.input:focus {
+    outline: none; 
+    border-top: 2px solid #FFD700;
+    transition: border-bottom 0.3s;
+    color:#333652;
+    font-family: 'Space Grotesk', sans-serif;
+}
+.input, .input:focus {
+    border-radius: 16px;
+}
+.inputBox{
+    padding: 3px;
+}
+.button{
+    color:#333652;
+    background-color: #e9eaec;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: larger;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 2em;
+    font-weight: bold;
+    margin: 2em;
+    transition: transform 0.3s;
+}
+.button:hover{
+    transform: scale(1.1);
+}
+
+.valuesDay {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr); 
+    grid-template-rows: repeat(3, 1fr);    
+    column-gap: 40px;
+    row-gap: 0;
+}
+.day{
+    width: 50%;
+    height:250px;
+    background-color:#FFD700;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding:20px 40px;
+}
+.half{
+    padding: 4px;
+    text-align: left;
+    border-bottom: #333652 2px solid;
+}
+p{
+    color: #333652;
+    font-size: large;
+    font-weight: bold;
+}
+.head{
+    font-weight:lighter;
+    font-size: larger;
+    margin: 4px;
+}
+.head2{
+    font-weight:bold;
+    font-size: larger;
+    margin: 4px;
+}
+.table{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+}
+.card{
+    height: 140px;
+    width: 180px;
+    background-color: #FFD700;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 24px;
+    color: #333652;
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.1);
+}
+header ul li a:active {
+    border-bottom: 4px solid #FFD700;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+.card *{
+    margin: 4px;
+}
+h4{
+    font-size:x-large;
+    text-align: left;
+}
+h6{
+    font-size: medium;
+    text-align: left;
+}
+.cloudy{
+    text-align: left;
+    font-weight: 100;
+}
+.icon{
+    font-size: xx-large;
+    padding-right: 20px;
+}
+.both{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0;
+}
+.currenttemp{
+    text-align: left;
+    font-size:4rem;
+    margin: 0;
+}
+.maxtemp{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.moon{
+    font-size: 3.5rem;
+    color: #333652;
+}
+.fiveday{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFD700;
+    border-radius: 10px;
+    width: 850px;
+    padding: 20px;
+    margin: 20px 0;
+}
+.fivedayhead{
+    display: flex;
+    justify-content: center;
+}
+.day-card{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    background-color: #FFD700;
+    padding: 30px;
+    margin: 0 auto;
+    border-radius: 10px;
+    height:270px;
+}
+.nightcard{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    background-color: #FFD700;
+    padding: 30px;
+    margin: 20px auto;
+    border-radius: 10px;
+    height:200px;
+}
+.onedaygrid {
+    display: grid;
+    grid-template-columns: repeat(2,4fr);
+    grid-template-rows: repeat(3, 1fr);
+    column-gap:40px;
+    row-gap: 0px;
+}
+
+.onedaygrid > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:2px;
+    max-height:40px;
+    align-items: center;
+}
+h4{
+    color: #333652;
+
+}

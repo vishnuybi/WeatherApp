@@ -1,0 +1,41 @@
+<%- include("partials/header.ejs") %>
+
+<h1>Current Forecast</h1>
+<form action="post" method="post">
+<div class="inputBox">
+  <input class="input" id="city"name="id" type="text" label="" placeholder="--Enter a City--" />
+</div>
+<input formaction="/currentforecast" type="submit" class="button" value="Get Forecast"></input>
+</form>
+<% if(locals.weather){ %>
+    <div class="day">
+        <p class="half"><%= city %> </p>
+      <div class="maxtemp"> 
+        <h2 class="currenttemp"><%= weather[0].Temperature.Metric.Value %> °C</h2>
+        <i class="moon icon fa-regular fa-moon"></i>
+    </div>
+      <div class="valuesDay">
+            <div class="table">
+                <p class="head">Temp feels</p>
+                <p class="head2"><%= weather[0].RealFeelTemperature.Metric.Value %> °C</p>
+            </div>
+            <div class="table">
+                <p class="head">Wind Gust</p>
+                <p class="head2"><%= weather[0].WindGust.Speed.Metric.Value%> Km/h <%=  weather[0].Wind.Direction.Localized %></p>
+            </div><div class="table">
+                <p class="head">Precipitation</p>
+                <p class="head2">20%</p>
+            </div><div class="table">
+                <p class="head">Humidity</p>
+                <p class="head2"><%= weather[0].RelativeHumidity %> g/m<sup>3</sup></p>
+            </div><div class="table">
+                <p class="head">Pressure</p>
+                <p class="head2"><%= weather[0].Pressure.Metric.Value %> mb</p>
+            </div><div class="table">
+                <p class="head">Max UV Index</p>
+                <p class="head2"><%= weather[0].UVIndex%> <%=  weather[0].UVIndexText %></p>
+            </div>
+      </div>
+    </div>
+    <%- include("partials/footer.ejs") %>
+    <% } %>

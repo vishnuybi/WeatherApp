@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+<h1>Accurate, reliable, up-to-date forecasts.</h1>
+<h2>Live Forecasts for Some of the Known Cities</h2>
+<h3>
+    Powered by the Accuweather API
+</h3>
+<h5>Our weather website uses the AccuWeather API to provide users with accurate and up-to-date weather information for their location or any other selected region. With hourly and daily forecasts, interactive maps, and historical weather data, our website enables users to stay informed about the latest weather patterns and make informed decisions about their daily activities. The AccuWeather API ensures that our website delivers reliable weather information to users, allowing them to plan their day, travel safely, and stay prepared for any severe weather events.</h5>
+<div class="container">
+<%for(let i=0; i<50;i++){%>
+<div class="card">
+    <h4><%= content[i].LocalizedName %></h4>
+    <h6><%= content[i].Country.LocalizedName %></h6>
+    <div class="both">
+        <% if(content[i].IsDayTime){ %>
+    <i class="icon fa-regular fa-sun"></i>
+    <% }else{ %>
+        <i class="icon fa-regular fa-moon"></i>
+        <% } %>
+    <h4><%= content[i].Temperature.Metric.Value %>°C</h4>
+</div>
+    <p class="cloudy">Cloudy</p>
+</div>
+<% } %>
+</div>
+<%- include("partials/footer.ejs") %>
